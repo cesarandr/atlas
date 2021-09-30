@@ -1,6 +1,6 @@
 import argparse
 
-class Input():
+class Cli():
 
 	def get_input():
 
