@@ -2,14 +2,14 @@ import argparse
 
 class Cli():
 
-	def get_input():
+	def get_parser():
 
 		parser = argparse.ArgumentParser(prog="atlas", description="A programm to reach your goals")
-		subparsers = parser.add_subparsers(title="subcommands")
+		subparsers = parser.add_subparsers(title="subcommands", dest="object", required=True)
 
 		# sheet commands
 		sheet_parser = subparsers.add_parser("sheet", help="manage your sheets")
-		sheet_subparsers = sheet_parser.add_subparsers()
+		sheet_subparsers = sheet_parser.add_subparsers(dest="action", required=True)
 
 		create_sheet_parser = sheet_subparsers.add_parser("create", help="create a new sheet")
 		create_sheet_parser.add_argument("sheetname", action="store", help="set the sheetname")
@@ -19,7 +19,7 @@ class Cli():
 
 		# task commands
 		task_parser = subparsers.add_parser("task", help="manage your tasks")
-		task_subparser = task_parser.add_subparsers()
+		task_subparser = task_parser.add_subparsers(dest="action", required=True)
 
 		create_task_parser = task_subparser.add_parser("create", help="create a new task")
 		create_task_parser.add_argument("name", action="store", help="name the task")
@@ -32,7 +32,7 @@ class Cli():
 
 		# user commands
 		user_parser = subparsers.add_parser("user", help="manage your users")
-		user_subparser = user_parser.add_subparsers()
+		user_subparser = user_parser.add_subparsers(dest="action", required=True)
 
 		create_user_parser = user_subparser.add_parser("create", help="create a new user")
 		create_user_parser.add_argument("username", action="store", help="set username")
@@ -41,6 +41,4 @@ class Cli():
 		delete_user_parser = user_subparser.add_parser("delete", help="delete an existing user")
 		delete_user_parser.add_argument("username", action="store", help="define user to delete")
 
-		args = parser.parse_args()
-
-		return args
+		return parser
