@@ -1,5 +1,6 @@
 class Task():
 	def __init__(self, name, user, duedate, note=None, tags=[]):
+		self.id = None
 		self.name = name
 		self.user = user
 		self.duedate = duedate
