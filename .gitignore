@@ -1,3 +1,5 @@
 base/__pycache__
 ui/__pycache__
 api/__pycache__
+test.py
+test.db
